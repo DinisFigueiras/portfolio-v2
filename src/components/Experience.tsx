@@ -1,7 +1,11 @@
 
+import { useState, useEffect, useRef } from 'react';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 
 const Experience = () => {
+  const [visibleExperiences, setVisibleExperiences] = useState([0]);
+  const experienceRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const experiences = [
     {
       title: 'Senior Technical Lead',
@@ -46,7 +50,7 @@ const Experience = () => {
       title: 'Junior Developer',
       company: 'Web Development Studio',
       location: 'Portugal',
-      period: '2000 - 2010',
+      period: '2016 - 2020',
       description: 'Started my journey in web development, learning foundational technologies and gaining experience in software development lifecycle.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'ASP.NET', 'SQL Server'],
       highlights: [
@@ -57,6 +61,32 @@ const Experience = () => {
     }
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      experienceRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // Check if the element is in the viewport
+          if (rect.top <= windowHeight * 0.75 && rect.bottom >= 0) {
+            setVisibleExperiences(prev => {
+              if (!prev.includes(index)) {
+                return [...prev, index].sort((a, b) => a - b);
+              }
+              return prev;
+            });
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id="experience" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +95,7 @@ const Experience = () => {
             Professional <span className="text-gradient">Journey</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Two decades of growth, innovation, and continuous learning in software development.
+            Years of growth, innovation, and continuous learning in software development.
           </p>
         </div>
 
@@ -73,16 +103,25 @@ const Experience = () => {
           {/* Timeline line */}
           <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/20"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {experiences.map((exp, index) => (
               <div 
                 key={index}
+                ref={el => experienceRefs.current[index] = el}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } flex-col md:space-x-8`}
+                } flex-col md:space-x-8 transition-all duration-700 ${
+                  visibleExperiences.includes(index) 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"></div>
+                <div className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background z-10 transition-all duration-500 ${
+                  visibleExperiences.includes(index) 
+                    ? 'bg-primary scale-100' 
+                    : 'bg-muted scale-75'
+                }`}></div>
 
                 {/* Content */}
                 <div className={`w-full md:w-1/2 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>

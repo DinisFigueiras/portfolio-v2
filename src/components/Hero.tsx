@@ -18,11 +18,11 @@ const Hero = () => {
           </h1>
           
           <div className="text-xl md:text-2xl text-muted-foreground mb-8 font-mono">
-            <span className="text-primary">></span> Senior Software Developer
+            <span className="text-primary">{'>'}</span> Senior Software Developer
           </div>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            24 years of experience crafting innovative web solutions, leading development teams, 
+            24 years old with extensive experience crafting innovative web solutions, leading development teams, 
             and turning complex ideas into elegant, scalable applications.
           </p>
 

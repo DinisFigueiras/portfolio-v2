@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Code, User, Briefcase, Mail } from 'lucide-react';
+import { Menu, X, Code, User, Briefcase, Mail, FolderOpen } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +18,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'About', href: '#about', icon: User },
     { name: 'Experience', href: '#experience', icon: Briefcase },
+    { name: 'Portfolio', href: '#portfolio', icon: FolderOpen },
     { name: 'Skills', href: '#skills', icon: Code },
     { name: 'Contact', href: '#contact', icon: Mail },
   ];
