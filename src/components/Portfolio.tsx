@@ -8,48 +8,48 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Movie Explorer',
       category: 'web',
-      description: 'Modern e-commerce solution with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard.',
+      description: 'A React-based movie discovery application that allows users to search, filter, and explore movies with detailed information and ratings.',
       image: '/placeholder.svg',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-      liveUrl: '#',
-      githubUrl: '#',
+      technologies: ['React', 'JavaScript', 'CSS', 'Movie API'],
+      liveUrl: 'https://dinisfigueiras.github.io/movie-explorer/',
+      githubUrl: 'https://github.com/DinisFigueiras/movie-explorer',
       featured: true
     },
     {
-      title: 'Task Management App',
+      title: 'Task Management System',
       category: 'web',
-      description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
+      description: 'A comprehensive task management application built with modern web technologies for organizing and tracking personal and team projects.',
       image: '/placeholder.svg',
-      technologies: ['React', 'TypeScript', 'Socket.io', 'MongoDB'],
+      technologies: ['React', 'TypeScript', 'Local Storage', 'CSS'],
       liveUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/DinisFigueiras/task-manager',
       featured: true
     },
     {
-      title: 'Analytics Dashboard',
+      title: 'Weather Dashboard',
       category: 'web',
-      description: 'Data visualization dashboard for business analytics with interactive charts, real-time data updates, and custom reporting.',
+      description: 'A responsive weather application that provides current weather conditions and forecasts with a clean, intuitive interface.',
       image: '/placeholder.svg',
-      technologies: ['React', 'D3.js', 'Python', 'FastAPI'],
+      technologies: ['JavaScript', 'HTML5', 'CSS3', 'Weather API'],
       liveUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/DinisFigueiras/weather-app',
       featured: false
     },
     {
-      title: 'Mobile Banking App',
-      category: 'mobile',
-      description: 'Secure mobile banking application with biometric authentication, transaction history, and budget tracking features.',
+      title: 'Personal Website',
+      category: 'web',
+      description: 'My personal portfolio website showcasing my projects, skills, and professional journey as a software developer.',
       image: '/placeholder.svg',
-      technologies: ['React Native', 'Redux', 'Firebase', 'Biometric Auth'],
-      liveUrl: '#',
-      githubUrl: '#',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+      liveUrl: 'https://dinisfigueiras.com',
+      githubUrl: 'https://github.com/DinisFigueiras/portfolio',
       featured: true
     }
   ];
 
-  const categories = ['all', 'web', 'mobile', 'api'];
+  const categories = ['all', 'web', 'mobile'];
 
   const filteredProjects = selectedCategory === 'all' 
     ? projects 
@@ -60,10 +60,10 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span>
+            My <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A collection of projects that showcase my expertise in modern web development and innovative solutions.
+            A collection of projects that showcase my learning journey and growing expertise in web development.
           </p>
         </div>
 
