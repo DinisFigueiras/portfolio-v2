@@ -1,10 +1,9 @@
 
-import { ArrowDown, Github, Linkedin, Mail, Code } from 'lucide-react';
+import { ArrowDown, Mail, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
@@ -16,15 +15,7 @@ const Hero = () => {
     'Software Engineer'
   ];
 
-  // Mouse tracking for parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // Enhanced typing animation
   useEffect(() => {
@@ -78,58 +69,13 @@ const Hero = () => {
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-background/80"></div>
       
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/30 to-primary/5"></div>
+      {/* Simple background overlay */}
+      <div className="absolute inset-0 bg-background/40"></div>
       
-      {/* Animated gradient mesh */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 animate-pulse"></div>
-        <div className="absolute inset-0 bg-gradient-to-tl from-blue-500/10 via-transparent to-purple-500/10 animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
-      
-      {/* Floating orbs with mouse parallax */}
-      <div 
-        className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"
-        style={{
-          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
-        }}
-      ></div>
-      <div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" 
-        style={{ 
-          animationDelay: '-3s',
-          transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
-        }}
-      ></div>
-      <div 
-        className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-float" 
-        style={{ 
-          animationDelay: '-1.5s',
-          transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * -0.015}px)`
-        }}
-      ></div>
-      
-      {/* Animated particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Moving grid pattern */}
+      {/* Static grid pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div 
-          className="absolute inset-0 bg-grid-pattern animate-grid-move"
+        <div
+          className="absolute inset-0"
           style={{
             backgroundImage: `
               linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
@@ -185,12 +131,12 @@ const Hero = () => {
             <div className="flex items-center space-x-4">
               <Button variant="outline" size="lg" asChild className="group hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <a href="https://www.linkedin.com/in/dinisfigueiras/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin size={20} className="group-hover:text-blue-400 transition-colors" />
+                  <ExternalLink size={20} className="group-hover:text-blue-400 transition-colors" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild className="group hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <a href="https://github.com/DinisFigueiras" target="_blank" rel="noopener noreferrer">
-                  <Github size={20} className="group-hover:text-primary transition-colors" />
+                  <ExternalLink size={20} className="group-hover:text-primary transition-colors" />
                 </a>
               </Button>
             </div>

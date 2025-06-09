@@ -177,9 +177,7 @@ const Experience = () => {
                       ? 'bg-primary scale-100 shadow-lg shadow-primary/50'
                       : 'bg-muted scale-75'
                   }`}>
-                    {isVisible && (
-                      <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-75"></div>
-                    )}
+
                   </div>
 
                   {/* Enhanced Content with staggered animations */}

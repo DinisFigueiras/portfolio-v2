@@ -15,7 +15,7 @@ const Portfolio = () => {
       title: 'E-agenda',
       category: 'mobile',
       description: 'School schedule website and mobile application helping students organize their academic schedule and transition from traditional paper schedules to a digital environment.',
-      image: '/placeholder.svg',
+      image: '/images/projects/e-agenda.png',
       technologies: ['Android Studio', 'Web Development', 'Database', 'Mobile App'],
       liveUrl: '#',
       githubUrl: '#',
@@ -23,7 +23,7 @@ const Portfolio = () => {
       stats: { stars: 15, forks: 4 },
       buttonType: 'pictures',
       modalContent: {
-        images: ['/placeholder.svg', '/placeholder.svg', '/placeholder.svg'],
+        images: ['/images/projects/e-agenda.png', '/images/projects/e-agenda.png', '/images/projects/e-agenda.png'],
         detailedDescription: 'E-agenda was developed to help students transition from traditional paper schedules to a digital environment. The application includes features like schedule management, notifications, and cross-platform synchronization.',
         features: ['Schedule Management', 'Push Notifications', 'Cross-platform Sync', 'Offline Support']
       }
@@ -32,7 +32,7 @@ const Portfolio = () => {
       title: 'Car Insurance Database Application',
       category: 'web',
       description: 'Design and development of a web application in Oracle Apex for a car insurance company with comprehensive database development in SQL Data Modeler.',
-      image: '/placeholder.svg',
+      image: '/images/projects/car.png',
       technologies: ['Oracle Apex', 'SQL', 'Database Design', 'Web Application'],
       liveUrl: '#',
       githubUrl: '#',
@@ -40,7 +40,7 @@ const Portfolio = () => {
       stats: { stars: 10, forks: 3 },
       buttonType: 'demo',
       modalContent: {
-        images: ['/placeholder.svg', '/placeholder.svg'],
+        images: ['/images/projects/car.png', '/images/projects/car.png'],
         detailedDescription: 'A comprehensive web application built with Oracle Apex for managing car insurance data. Features include policy management, claims processing, and comprehensive reporting.',
         features: ['Policy Management', 'Claims Processing', 'Reporting Dashboard', 'Data Analytics']
       }
@@ -49,7 +49,7 @@ const Portfolio = () => {
       title: 'Stock Replacement Application',
       category: 'desktop',
       description: 'A C# application connected to a company\'s inventory database to speed up the stock replacement process through barcode reader integration.',
-      image: '/placeholder.svg',
+      image: '/images/projects/stock.png',
       technologies: ['C#', '.NET', 'SQL Server', 'Barcode Scanner', 'Inventory Management'],
       liveUrl: '#',
       githubUrl: '#',
@@ -57,7 +57,7 @@ const Portfolio = () => {
       stats: { stars: 8, forks: 2 },
       buttonType: 'pictures',
       modalContent: {
-        images: ['/placeholder.svg', '/placeholder.svg', '/placeholder.svg'],
+        images: ['/images/projects/stock.png', '/images/projects/stock.png', '/images/projects/stock.png'],
         detailedDescription: 'Desktop application built with C# and .NET for inventory management. Integrates with barcode scanners to streamline the stock replacement process and reduce manual errors.',
         features: ['Barcode Integration', 'Real-time Inventory Updates', 'Automated Reports', 'Database Synchronization']
       }
@@ -66,7 +66,7 @@ const Portfolio = () => {
       title: 'Expense Tracker',
       category: 'web',
       description: 'Enterprise application built with ASP.NET Core using SyncFusion Component Library for comprehensive expense tracking and management.',
-      image: '/placeholder.svg',
+      image: '/images/projects/tracker.png',
       technologies: ['ASP.NET Core', 'C#', 'SyncFusion', 'Enterprise Application'],
       liveUrl: '#',
       githubUrl: '#',
@@ -79,7 +79,7 @@ const Portfolio = () => {
       title: 'Personal Portfolio',
       category: 'web',
       description: 'My personal portfolio website showcasing my projects, skills, and professional journey as a software developer.',
-      image: '/placeholder.svg',
+      image: '/images/icons/coding-icon.svg',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
       liveUrl: 'https://dinisfigueiras.com',
       githubUrl: 'https://github.com/DinisFigueiras/portfolio',
@@ -150,8 +150,6 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="py-20 relative">
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 animate-pulse"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -189,7 +187,7 @@ const Portfolio = () => {
             <div 
               key={index}
               ref={el => projectRefs.current[index] = el}
-              className={`group bg-card/80 backdrop-blur-sm rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 ${
+              className={`group bg-card/80 backdrop-blur-sm rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 ${
                 visibleProjects.includes(index) 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
@@ -200,7 +198,7 @@ const Portfolio = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 
                 {/* Overlay with buttons */}
@@ -218,7 +216,7 @@ const Portfolio = () => {
                 </div>
                 
                 {project.featured && (
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-primary to-blue-400 text-primary-foreground text-xs px-3 py-1 rounded-full font-medium animate-pulse">
+                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-medium">
                     Featured
                   </div>
                 )}

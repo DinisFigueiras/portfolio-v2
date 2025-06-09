@@ -60,7 +60,7 @@ const Skills = () => {
               {/* Glowing background effect */}
               <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-10 rounded-lg blur transition-all duration-500`}></div>
               
-              <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:-translate-y-1 relative">
+              <div className="bg-card p-6 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/10 group-hover:-translate-y-1 relative">
                 <div className="flex items-center mb-6">
                   <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} mr-3`}>
                     <category.icon className="w-6 h-6 text-white" />
@@ -92,11 +92,7 @@ const Skills = () => {
 
         {/* Enhanced learning section */}
         <div className="mt-16 text-center">
-          <div className="relative bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl border border-primary/20 backdrop-blur-sm overflow-hidden">
-            {/* Animated background pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 animate-pulse"></div>
-            </div>
+          <div className="relative bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl border border-primary/20 overflow-hidden">
 
             <h3 className="text-2xl font-bold mb-4 relative z-10">Continuous Learning</h3>
             <p className="text-lg text-muted-foreground mb-6 relative z-10">
