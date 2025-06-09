@@ -5,7 +5,15 @@ import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isTyping, setIsTyping] = useState(true);
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const titles = [
+    'Junior Software Developer',
+    'Back-End Developer', 
+    'Software Engineer'
+  ];
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -15,6 +23,37 @@ const Hero = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  useEffect(() => {
+    const typeSpeed = 100;
+    const deleteSpeed = 50;
+    const pauseTime = 2000;
+
+    const timeout = setTimeout(() => {
+      const currentTitle = titles[currentIndex];
+      
+      if (!isDeleting) {
+        // Typing
+        if (currentText.length < currentTitle.length) {
+          setCurrentText(currentTitle.substring(0, currentText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        // Deleting
+        if (currentText.length > 0) {
+          setCurrentText(currentText.substring(0, currentText.length - 1));
+        } else {
+          // Finished deleting, move to next title
+          setIsDeleting(false);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % titles.length);
+        }
+      }
+    }, isDeleting ? deleteSpeed : typeSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, currentIndex, isDeleting, titles]);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -66,13 +105,13 @@ const Hero = () => {
             </h1>
           </div>
           
-          {/* Typing effect */}
-          <div className="text-xl md:text-2xl text-muted-foreground mb-8 font-mono">
+          {/* Typewriter effect */}
+          <div className="text-xl md:text-2xl text-muted-foreground mb-8 font-mono h-8 flex items-center justify-center">
             <span className="text-primary">{'>'}</span> 
-            <span className={`${isTyping ? 'typing-animation' : ''}`}>
-              Junior Software Developer
+            <span className="ml-2 min-w-0">
+              {currentText}
+              <span className="animate-pulse text-primary">|</span>
             </span>
-            <span className="animate-pulse">|</span>
           </div>
           
           <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
