@@ -8,37 +8,47 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: 'Movie Explorer',
-      category: 'web',
-      description: 'A React-based movie discovery application that allows users to search, filter, and explore movies with detailed information and ratings.',
+      title: 'E-agenda',
+      category: 'mobile',
+      description: 'School schedule website and mobile application helping students organize their academic schedule and transition from traditional paper schedules to a digital environment.',
       image: '/placeholder.svg',
-      technologies: ['React', 'JavaScript', 'CSS', 'Movie API'],
-      liveUrl: 'https://dinisfigueiras.github.io/movie-explorer/',
-      githubUrl: 'https://github.com/DinisFigueiras/movie-explorer',
+      technologies: ['Android Studio', 'Web Development', 'Database', 'Mobile App'],
+      liveUrl: '#',
+      githubUrl: '#',
       featured: true
     },
     {
-      title: 'Task Management System',
+      title: 'Car Insurance Database Application',
       category: 'web',
-      description: 'A comprehensive task management application built with modern web technologies for organizing and tracking personal and team projects.',
+      description: 'Design and development of a web application in Oracle Apex for a car insurance company with comprehensive database development in SQL Data Modeler.',
       image: '/placeholder.svg',
-      technologies: ['React', 'TypeScript', 'Local Storage', 'CSS'],
+      technologies: ['Oracle Apex', 'SQL', 'Database Design', 'Web Application'],
       liveUrl: '#',
-      githubUrl: 'https://github.com/DinisFigueiras/task-manager',
+      githubUrl: '#',
       featured: true
     },
     {
-      title: 'Weather Dashboard',
-      category: 'web',
-      description: 'A responsive weather application that provides current weather conditions and forecasts with a clean, intuitive interface.',
+      title: 'Stock Replacement Application',
+      category: 'desktop',
+      description: 'A C# application connected to a company\'s inventory database to speed up the stock replacement process through barcode reader integration.',
       image: '/placeholder.svg',
-      technologies: ['JavaScript', 'HTML5', 'CSS3', 'Weather API'],
+      technologies: ['C#', '.NET', 'SQL Server', 'Barcode Scanner', 'Inventory Management'],
       liveUrl: '#',
-      githubUrl: 'https://github.com/DinisFigueiras/weather-app',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      title: 'Expense Tracker',
+      category: 'web',
+      description: 'Enterprise application built with ASP.NET Core using SyncFusion Component Library for comprehensive expense tracking and management.',
+      image: '/placeholder.svg',
+      technologies: ['ASP.NET Core', 'C#', 'SyncFusion', 'Enterprise Application'],
+      liveUrl: '#',
+      githubUrl: '#',
       featured: false
     },
     {
-      title: 'Personal Website',
+      title: 'Personal Portfolio',
       category: 'web',
       description: 'My personal portfolio website showcasing my projects, skills, and professional journey as a software developer.',
       image: '/placeholder.svg',
@@ -49,7 +59,7 @@ const Portfolio = () => {
     }
   ];
 
-  const categories = ['all', 'web', 'mobile'];
+  const categories = ['all', 'web', 'mobile', 'desktop'];
 
   const filteredProjects = selectedCategory === 'all' 
     ? projects 
@@ -63,7 +73,7 @@ const Portfolio = () => {
             My <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A collection of projects that showcase my learning journey and growing expertise in web development.
+            A collection of projects that showcase my experience in software development, from web applications to mobile apps and enterprise solutions.
           </p>
         </div>
 

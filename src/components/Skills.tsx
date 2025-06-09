@@ -1,27 +1,27 @@
 
-import { Code, Database, Settings, Palette } from 'lucide-react';
+import { Code, Database, Settings, Cloud } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
     {
       icon: Code,
-      title: 'Frontend',
-      skills: ['JavaScript', 'React', 'HTML5', 'CSS3', 'TypeScript']
+      title: 'Programming Languages',
+      skills: ['C#', '.NET', 'JavaScript', 'Java', 'Python', 'PHP']
     },
     {
       icon: Database,
-      title: 'Backend',
-      skills: ['Node.js', 'Express', 'MongoDB', 'REST APIs', 'SQL']
+      title: 'Databases',
+      skills: ['SQL Server', 'Azure SQL', 'MySQL', 'MongoDB', 'Oracle SQL Developer', 'Oracle Apex']
+    },
+    {
+      icon: Cloud,
+      title: 'Cloud & Azure',
+      skills: ['Microsoft Azure', 'Azure DevOps', 'Azure Functions', 'Azure SQL Database', 'Cloud Computing']
     },
     {
       icon: Settings,
-      title: 'Tools & Technologies',
-      skills: ['Git', 'VS Code', 'Webpack', 'NPM', 'Chrome DevTools']
-    },
-    {
-      icon: Palette,
-      title: 'Design & UI',
-      skills: ['Responsive Design', 'CSS Grid', 'Flexbox', 'Bootstrap', 'Figma']
+      title: 'Development Tools',
+      skills: ['Visual Studio', 'VS Code', 'Git', 'Android Studio', 'Swift', 'Agile Methodologies']
     }
   ];
 
@@ -33,7 +33,7 @@ const Skills = () => {
             Technical <span className="text-gradient">Skills</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Technologies and tools I work with to bring ideas to life.
+            Technologies and tools I use to build scalable software solutions.
           </p>
         </div>
 
@@ -65,14 +65,14 @@ const Skills = () => {
 
         <div className="mt-16 text-center">
           <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-lg border border-primary/20">
-            <h3 className="text-2xl font-bold mb-4">Always Learning</h3>
+            <h3 className="text-2xl font-bold mb-4">Continuous Learning</h3>
             <p className="text-lg text-muted-foreground mb-6">
-              I'm constantly expanding my skillset and staying up-to-date with the latest 
-              technologies and best practices in web development.
+              I'm constantly expanding my skillset and staying current with emerging technologies
+              and industry best practices in software development.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {['Python', 'Docker', 'AWS', 'Vue.js', 'GraphQL', 'Next.js'].map((tech) => (
-                <span 
+              {['React', 'Node.js', 'Docker', 'Kubernetes', 'TypeScript', 'Microservices'].map((tech) => (
+                <span
                   key={tech}
                   className="px-4 py-2 text-sm bg-accent/10 text-accent rounded-full border border-accent/20 hover:bg-accent/20 transition-colors"
                 >

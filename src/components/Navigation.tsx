@@ -18,9 +18,9 @@ const Navigation = () => {
   const navItems = [
     { name: 'About', href: '#about', icon: User },
     { name: 'Experience', href: '#experience', icon: Briefcase },
+    { name: 'Education', href: '#education', icon: GraduationCap },
     { name: 'Portfolio', href: '#portfolio', icon: FolderOpen },
     { name: 'Skills', href: '#skills', icon: Code },
-    { name: 'Education', href: '#education', icon: GraduationCap },
     { name: 'Contact', href: '#contact', icon: Mail },
   ];
 

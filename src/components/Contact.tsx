@@ -44,13 +44,13 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'dinis@dinisfigueiras.com',
-      href: 'mailto:dinis@dinisfigueiras.com'
+      value: 'dinisfigueiras00@gmail.com',
+      href: 'mailto:dinisfigueiras00@gmail.com'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Portugal',
+      value: 'Benavente, Santarém, Portugal',
       href: null
     },
     {
@@ -71,7 +71,7 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/dinisfigueiras',
+      href: 'https://github.com/DinisFigueiras',
       color: 'hover:text-gray-400'
     }
   ];
@@ -94,7 +94,7 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Whether you're looking for a technical lead, need consultation on your project, 
+                Whether you're looking for a software engineer, need consultation on your project,
                 or want to explore collaboration opportunities, I'd love to hear from you.
               </p>
             </div>

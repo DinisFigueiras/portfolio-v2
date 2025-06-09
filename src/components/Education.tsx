@@ -4,36 +4,56 @@ import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 const Education = () => {
   const education = [
     {
-      degree: 'Computer Science',
-      institution: 'University of Porto',
-      location: 'Porto, Portugal',
-      period: '2018 - 2022',
-      description: 'Comprehensive study of computer science fundamentals including algorithms, data structures, software engineering, and web development.',
+      degree: 'Computer Engineering',
+      institution: 'ISTEC',
+      location: 'Portugal',
+      period: '2021 - 2023',
+      description: 'Advanced study in computer engineering focusing on software development, system architecture, and modern programming technologies.',
       highlights: [
-        'Graduated with honors',
-        'Specialized in Web Development',
-        'Final project focused on full-stack web applications'
+        'Specialized in software engineering and system design',
+        'Gained expertise in enterprise application development',
+        'Completed projects using modern development frameworks'
       ]
     },
     {
-      degree: 'Web Development Bootcamp',
-      institution: 'FreeCodeCamp',
-      location: 'Online',
-      period: '2021',
-      description: 'Intensive program covering modern web development technologies and practices.',
+      degree: 'Management Informatics',
+      institution: 'ISTEC',
+      location: 'Portugal',
+      period: '2019 - 2021',
+      description: 'Bachelor degree combining business management principles with information technology, providing a strong foundation in both technical and business domains.',
       highlights: [
-        'Full-Stack Web Development Certificate',
-        'Responsive Web Design Certificate',
-        'JavaScript Algorithms and Data Structures'
+        'Learned business process optimization through technology',
+        'Studied database management and information systems',
+        'Developed understanding of IT project management'
+      ]
+    },
+    {
+      degree: 'Management and Programming of Computer Systems',
+      institution: 'Professional School',
+      location: 'Portugal',
+      period: '2015 - 2018',
+      description: 'Professional course focused on practical computer programming and system management skills.',
+      highlights: [
+        'Gained foundational programming skills',
+        'Learned system administration and maintenance',
+        'Developed practical IT support capabilities'
       ]
     }
   ];
 
   const certifications = [
-    'JavaScript ES6+ Certification',
-    'React Development Certificate',
-    'Responsive Web Design Certificate',
-    'Git & GitHub Fundamentals'
+    {
+      name: 'Microsoft Certified: Azure Developer Associate (AZ-204)',
+      issuer: 'Microsoft',
+      date: 'September 2024',
+      credentialId: '575FDB310F01BE57'
+    },
+    {
+      name: 'Microsoft Certified: Azure Fundamentals (AZ-900)',
+      issuer: 'Microsoft',
+      date: 'November 2022',
+      credentialId: 'E50DCE79BC50D2C6'
+    }
   ];
 
   return (
@@ -106,12 +126,20 @@ const Education = () => {
             <div className="bg-card p-6 rounded-lg border border-border">
               <div className="space-y-4">
                 {certifications.map((cert, index) => (
-                  <div 
+                  <div
                     key={index}
-                    className="flex items-center p-4 bg-primary/5 rounded-lg border border-primary/20 hover:bg-primary/10 transition-colors"
+                    className="p-4 bg-primary/5 rounded-lg border border-primary/20 hover:bg-primary/10 transition-colors"
                   >
-                    <Award className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
-                    <span className="font-medium text-foreground">{cert}</span>
+                    <div className="flex items-start">
+                      <Award className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-1" />
+                      <div className="flex-1">
+                        <h4 className="font-medium text-foreground mb-1">{cert.name}</h4>
+                        <div className="text-sm text-muted-foreground">
+                          <p className="mb-1">{cert.issuer} • {cert.date}</p>
+                          <p className="text-xs">Credential ID: {cert.credentialId}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
