@@ -57,8 +57,19 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+        }}
+      ></div>
+      
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/80"></div>
+      
       {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/30 to-primary/5"></div>
       
       {/* Animated gradient mesh */}
       <div className="absolute inset-0">
