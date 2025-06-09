@@ -60,6 +60,13 @@ const Hero = () => {
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
       
+      {/* Animated gradient mesh */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-blue-500/10 via-transparent to-purple-500/10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+      
       {/* Floating orbs with mouse parallax */}
       <div 
         className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"
@@ -72,6 +79,13 @@ const Hero = () => {
         style={{ 
           animationDelay: '-3s',
           transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`
+        }}
+      ></div>
+      <div 
+        className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-float" 
+        style={{ 
+          animationDelay: '-1.5s',
+          transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * -0.015}px)`
         }}
       ></div>
       
@@ -89,6 +103,20 @@ const Hero = () => {
             }}
           />
         ))}
+      </div>
+
+      {/* Moving grid pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div 
+          className="absolute inset-0 bg-grid-pattern animate-grid-move"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}
+        ></div>
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -80,6 +80,10 @@
     animation: float 6s ease-in-out infinite;
   }
 
+  .animate-grid-move {
+    animation: gridMove 20s linear infinite;
+  }
+
   .typing-animation {
     overflow: hidden;
     border-right: 2px solid hsl(var(--primary));
@@ -127,6 +131,15 @@
   }
   50% {
     transform: translateY(-20px);
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
   }
 }
 
