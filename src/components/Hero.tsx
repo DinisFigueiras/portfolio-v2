@@ -1,5 +1,5 @@
 
-import { ArrowDown, Github, Linkedin, Mail, Code, Sparkles } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -199,7 +199,6 @@ const Hero = () => {
           {/* Enhanced scroll indicator */}
           <div className="animate-bounce">
             <a href="#about" className="inline-flex flex-col items-center text-muted-foreground hover:text-primary transition-colors group">
-              <Sparkles size={16} className="mb-2 group-hover:animate-spin" />
               <ArrowDown size={32} className="group-hover:translate-y-1 transition-transform" />
             </a>
           </div>

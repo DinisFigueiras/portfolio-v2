@@ -1,11 +1,13 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { ExternalLink, Github, Eye, Star, GitFork } from 'lucide-react';
+import { ExternalLink, Github, Eye, Star, GitFork, Images, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const projects = [
@@ -18,7 +20,13 @@ const Portfolio = () => {
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
-      stats: { stars: 15, forks: 4 }
+      stats: { stars: 15, forks: 4 },
+      buttonType: 'pictures',
+      modalContent: {
+        images: ['/placeholder.svg', '/placeholder.svg', '/placeholder.svg'],
+        detailedDescription: 'E-agenda was developed to help students transition from traditional paper schedules to a digital environment. The application includes features like schedule management, notifications, and cross-platform synchronization.',
+        features: ['Schedule Management', 'Push Notifications', 'Cross-platform Sync', 'Offline Support']
+      }
     },
     {
       title: 'Car Insurance Database Application',
@@ -29,7 +37,13 @@ const Portfolio = () => {
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
-      stats: { stars: 10, forks: 3 }
+      stats: { stars: 10, forks: 3 },
+      buttonType: 'demo',
+      modalContent: {
+        images: ['/placeholder.svg', '/placeholder.svg'],
+        detailedDescription: 'A comprehensive web application built with Oracle Apex for managing car insurance data. Features include policy management, claims processing, and comprehensive reporting.',
+        features: ['Policy Management', 'Claims Processing', 'Reporting Dashboard', 'Data Analytics']
+      }
     },
     {
       title: 'Stock Replacement Application',
@@ -40,7 +54,13 @@ const Portfolio = () => {
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
-      stats: { stars: 8, forks: 2 }
+      stats: { stars: 8, forks: 2 },
+      buttonType: 'pictures',
+      modalContent: {
+        images: ['/placeholder.svg', '/placeholder.svg', '/placeholder.svg'],
+        detailedDescription: 'Desktop application built with C# and .NET for inventory management. Integrates with barcode scanners to streamline the stock replacement process and reduce manual errors.',
+        features: ['Barcode Integration', 'Real-time Inventory Updates', 'Automated Reports', 'Database Synchronization']
+      }
     },
     {
       title: 'Expense Tracker',
@@ -51,7 +71,9 @@ const Portfolio = () => {
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
-      stats: { stars: 6, forks: 1 }
+      stats: { stars: 6, forks: 1 },
+      buttonType: 'live',
+      modalContent: null
     },
     {
       title: 'Personal Portfolio',
@@ -62,15 +84,45 @@ const Portfolio = () => {
       liveUrl: 'https://dinisfigueiras.com',
       githubUrl: 'https://github.com/DinisFigueiras/portfolio',
       featured: true,
-      stats: { stars: 15, forks: 4 }
+      stats: { stars: 15, forks: 4 },
+      buttonType: 'live',
+      modalContent: null
     }
   ];
 
   const categories = ['all', 'web', 'mobile', 'desktop'];
 
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects 
+  const filteredProjects = selectedCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
+
+  const openModal = (project: any) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
+  const getButtonText = (buttonType: string) => {
+    switch (buttonType) {
+      case 'pictures': return 'Pictures';
+      case 'demo': return 'Demo';
+      case 'live': return 'Live Demo';
+      default: return 'View';
+    }
+  };
+
+  const getButtonIcon = (buttonType: string) => {
+    switch (buttonType) {
+      case 'pictures': return Images;
+      case 'demo': return Eye;
+      case 'live': return ExternalLink;
+      default: return Eye;
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,12 +169,12 @@ const Portfolio = () => {
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={selectedCategory === category ? "default" : "ghost"}
+                variant="ghost"
                 onClick={() => setSelectedCategory(category)}
-                className={`capitalize transition-all duration-300 ${
-                  selectedCategory === category 
-                    ? 'shadow-lg shadow-primary/25' 
-                    : 'hover:shadow-md hover:shadow-primary/10'
+                className={`capitalize transition-all duration-300 rounded-full ${
+                  selectedCategory === category
+                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90'
+                    : 'hover:shadow-md hover:shadow-primary/10 hover:bg-primary/10'
                 }`}
               >
                 {category}
@@ -204,12 +256,27 @@ const Portfolio = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <Button size="sm" variant="outline" asChild className="flex-1 group/btn">
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2">
-                      <ExternalLink size={14} className="group-hover/btn:rotate-45 transition-transform" />
-                      <span>Live Demo</span>
-                    </a>
-                  </Button>
+                  {project.buttonType === 'live' ? (
+                    <Button size="sm" variant="outline" asChild className="flex-1 group/btn">
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2">
+                        <ExternalLink size={14} className="group-hover/btn:rotate-45 transition-transform" />
+                        <span>{getButtonText(project.buttonType)}</span>
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => openModal(project)}
+                      className="flex-1 group/btn flex items-center justify-center space-x-2"
+                    >
+                      {(() => {
+                        const IconComponent = getButtonIcon(project.buttonType);
+                        return <IconComponent size={14} className="group-hover/btn:scale-110 transition-transform" />;
+                      })()}
+                      <span>{getButtonText(project.buttonType)}</span>
+                    </Button>
+                  )}
                   <Button size="sm" variant="ghost" asChild>
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github size={14} />
@@ -221,6 +288,75 @@ const Portfolio = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedProject && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-card border-b border-border p-4 flex items-center justify-between">
+              <h3 className="text-2xl font-bold">{selectedProject.title}</h3>
+              <Button variant="ghost" size="sm" onClick={closeModal}>
+                <X size={20} />
+              </Button>
+            </div>
+
+            <div className="p-6">
+              {selectedProject.modalContent && (
+                <>
+                  {/* Image Gallery */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    {selectedProject.modalContent.images.map((image: string, index: number) => (
+                      <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden">
+                        <img
+                          src={image}
+                          alt={`${selectedProject.title} screenshot ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Detailed Description */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold mb-3">About this project</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.modalContent.detailedDescription}
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold mb-3">Key Features</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {selectedProject.modalContent.features.map((feature: string, index: number) => (
+                        <div key={index} className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-primary rounded-full"></div>
+                          <span className="text-muted-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Technologies */}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech: string, index: number) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full border border-primary/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
