@@ -1,5 +1,4 @@
-
-import { ArrowDown, Mail, ExternalLink } from 'lucide-react';
+import { ArrowDown, Mail, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -86,11 +85,11 @@ const Hero = () => {
         ></div>
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
         <div className="animate-fade-in">
           {/* Enhanced title with stagger animation */}
           <div className="mb-6">
-            <h1 className="text-5xl md:text-7xl font-bold">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight" style={{ lineHeight: '1.2' }}>
               <span className="inline-block animate-slide-down text-foreground" style={{ animationDelay: '0.1s' }}>
                 Dinis
               </span>{' '}
@@ -113,7 +112,7 @@ const Hero = () => {
 
           <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              23 years old Software Engineer from Portugal. I specialize in C#, .NET, SQL and Azure,
+              24 years old Software Engineer from Portugal. I specialize in C#, .NET, Azure and SQL,
               with experience in Agile development environments and a passion for building scalable solutions.
             </p>
           </div>
@@ -131,12 +130,12 @@ const Hero = () => {
             <div className="flex items-center space-x-4">
               <Button variant="outline" size="lg" asChild className="group hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <a href="https://www.linkedin.com/in/dinisfigueiras/" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink size={20} className="group-hover:text-blue-400 transition-colors" />
+                  <Linkedin size={20} className="group-hover:text-blue-400 transition-colors" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild className="group hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <a href="https://github.com/DinisFigueiras" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink size={20} className="group-hover:text-primary transition-colors" />
+                  <Github size={20} className="group-hover:text-primary transition-colors" />
                 </a>
               </Button>
             </div>

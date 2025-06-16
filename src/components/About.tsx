@@ -17,14 +17,14 @@ const About = () => {
             About <span className="text-gradient">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Passionate about software engineering, cloud technologies, and building scalable solutions that make a difference.
+            Passionate about software engineering, cloud technologies, and building scalable solutions.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a 23-year-old Software Engineer from Portugal with over 2 years of professional experience.
+              I'm a 24-year-old Software Engineer from Portugal with more then 2 years of professional experience.
               I've worked mostly with C#, .NET, SQL, and Azure, gaining valuable experience in Agile
               software development environments, processes, and methodologies.
             </p>
@@ -32,7 +32,7 @@ const About = () => {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Currently working at Hitachi Vantara, I specialize in enterprise software development
               and cloud technologies. I hold Microsoft Azure certifications and have experience
-              working with databases, web applications, and mobile development using Android Studio and Swift.
+              working with databases, web applications, microservices adn devops.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -57,16 +57,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-lg border border-primary/20">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">My Philosophy</h3>
-            <p className="text-lg text-muted-foreground italic">
-              "I believe in building software that not only solves problems but is also scalable,
-              maintainable, and makes a real difference in people's lives. Every project is an
-              opportunity to learn and grow as a developer."
-            </p>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

@@ -90,28 +90,7 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Enhanced learning section */}
-        <div className="mt-16 text-center">
-          <div className="relative bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl border border-primary/20 overflow-hidden">
-
-            <h3 className="text-2xl font-bold mb-4 relative z-10">Continuous Learning</h3>
-            <p className="text-lg text-muted-foreground mb-6 relative z-10">
-              I'm constantly expanding my skillset and staying current with emerging technologies
-              and industry best practices in software development.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 relative z-10">
-              {['React', 'Node.js', 'Docker', 'Kubernetes', 'TypeScript', 'Microservices'].map((tech, index) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 text-sm bg-accent/10 text-accent rounded-full border border-accent/20 hover:bg-accent/20 hover:scale-105 transition-all duration-300 cursor-pointer animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

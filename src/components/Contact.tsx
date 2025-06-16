@@ -50,7 +50,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Benavente, Santarém, Portugal',
+      value: 'Samora Correia, Santarém, Portugal',
       href: null
     },
     {

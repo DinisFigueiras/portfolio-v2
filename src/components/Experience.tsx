@@ -14,12 +14,13 @@ const Experience = () => {
       company: 'Hitachi Vantara',
       location: 'Portugal',
       period: '2023 - Present',
-      description: 'Working on enterprise data management and analytics solutions. Developing scalable applications using modern technologies in an Agile environment.',
-      technologies: ['C#', '.NET', 'Azure', 'SQL', 'JavaScript'],
+      description: 'At Hitachi Vantara, I work on building scalable microservices and REST APIs for enterprise-grade solutions. My responsibilities include integrating cloud services in Microsoft Azure, managing CI/CD pipelines, and writing unit-tested backend logic in Agile environments.',
+      technologies: ['C#', 'Azure', 'Postman', '.NET', 'SQL', 'Azure Devops'],
       highlights: [
-        'Contributing to enterprise-level data management solutions',
-        'Working with cloud technologies and Azure services',
-        'Participating in Agile development processes and methodologies'
+        'Designed and implemented RESTful APIs using C#',
+        'Built and maintained CI/CD workflows with Azure DevOps',
+        'Worked with Azure DataFactory and Databricks for data automation',
+        'Followed GitHub Flow for collaborative development'
       ]
     },
     {
@@ -27,12 +28,13 @@ const Experience = () => {
       company: 'Capgemini Portugal',
       location: 'Portugal',
       period: '2022',
-      description: 'Developed software solutions for various clients using .NET technologies. Gained experience in enterprise software development and client collaboration.',
-      technologies: ['C#', '.NET', 'SQL Server', 'Azure', 'JavaScript'],
+      description: 'At Capgemini, I was part of international projects developing backend components, performing data integration with Oracle tools, and creating business dashboards. I also expanded my skills with Azure certifications and internal Java/.NET training.',
+      technologies: ['C#', '.NET', 'Oracle SQL', 'ODI 12c', 'Power BI', 'Azure', 'Java'],
       highlights: [
-        'Delivered software solutions for multiple client projects',
-        'Worked with enterprise-level applications and databases',
-        'Collaborated with international teams and stakeholders'
+        'Implemented ETL processes using Oracle Data Integrator (ODI) 12c',
+        'Developed data reports with Power BI',
+        'Contributed to backend development using Java and .NET',
+        'Gained certifications in Microsoft Azure'
       ]
     },
     {
@@ -40,12 +42,13 @@ const Experience = () => {
       company: 'Datazone Lda',
       location: 'Portugal',
       period: '2021',
-      description: 'Focused on backend development and database management. Worked on business applications and data processing systems.',
-      technologies: ['C#', '.NET', 'SQL', 'Oracle', 'PHP'],
+      description: 'During my internship, I developed a complete insurance web application using Oracle Apex and supported several internal tools with C# and ASP.NET. I also worked on backend integration using SQL and MailKit for email automation.',
+      technologies: ['C#', 'Oracle Apex','.NET', 'SQL Server', 'PL/SQL', 'MailKit'],
       highlights: [
-        'Developed and maintained business applications',
-        'Optimized database queries and performance',
-        'Implemented data processing and management solutions'
+        'Built a fully functional web app using Oracle Apex and SQL Data Modeler',
+        'Created C# tools integrated with SQL Server and Azure services',
+        'Implemented backend logic in PL/SQL, ASP.NET, and JavaScript',
+        'Automated email operations using MailKit'
       ]
     },
     {
@@ -53,12 +56,12 @@ const Experience = () => {
       company: 'City Council',
       location: 'Portugal',
       period: '2018',
-      description: 'Provided technical support and assistance for computer systems and software. Gained experience in system administration and user support.',
-      technologies: ['Windows', 'Office Suite', 'Network Administration'],
+      description: 'I supported the IT department in maintaining hardware and configuring infrastructure across multiple municipal facilities. I helped restructure internal networks and ensured smooth operations in different city council departments.',
+      technologies: ['Windows', 'System Support','Hardware Setup', 'Networking'],
       highlights: [
-        'Provided technical support to municipal staff',
-        'Maintained computer systems and networks',
-        'Assisted with software installation and troubleshooting'
+        'Managed the setup and maintenance of workstations and servers',
+        'Assisted in the restructuring of internal network systems',
+        'Supported IT logistics across various public offices'
       ]
     },
     {
@@ -66,12 +69,12 @@ const Experience = () => {
       company: 'CNJ-Informatica',
       location: 'Portugal',
       period: '2017',
-      description: 'Started my professional journey in IT support and computer maintenance. Learned foundational skills in hardware and software troubleshooting.',
-      technologies: ['Hardware Maintenance', 'Windows', 'Basic Networking'],
+      description: 'In my first internship, I developed internal tools for barcode validation and supplier management. I worked on automating internal operations and improving data workflows through C# and MySQL.',
+      technologies: ['Winforms', 'Desktop App Development', 'C#', 'SQL'],
       highlights: [
-        'Gained first professional experience in IT',
-        'Learned computer hardware and software fundamentals',
-        'Developed problem-solving and customer service skills'
+        'Built barcode validation software using C# and MySQL',
+        'Automated supplier data verification processes',
+        'Strengthened programming fundamentals in early career stage'
       ]
     }
   ];
