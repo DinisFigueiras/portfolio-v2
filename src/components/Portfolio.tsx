@@ -81,7 +81,7 @@ const Portfolio = () => {
       description: 'My personal portfolio website showcasing my projects, skills, and professional journey as a software developer.',
       image: '/images/icons/coding-icon.svg',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
-      liveUrl: 'https://dinisfigueiras.com',
+      liveUrl: 'https://dinisfigueiras.pt',
       githubUrl: 'https://github.com/DinisFigueiras/portfolio',
       featured: true,
       stats: { stars: 15, forks: 4 },
