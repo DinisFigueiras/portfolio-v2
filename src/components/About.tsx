@@ -3,7 +3,7 @@ import { Code, Users, Award, Coffee } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { icon: Code, label: 'Years of Experience', value: '2+' },
+    { icon: Code, label: 'Years of Experience', value: '3+' },
     { icon: Users, label: 'Internships', value: '4' },
     { icon: Award, label: 'Certifications', value: '2' },
     { icon: Coffee, label: 'Cups of Coffee', value: '∞' },
@@ -24,7 +24,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a 24-year-old Software Engineer from Portugal with more then 2 years of professional experience.
+              I'm a 25-year-old Software Engineer from Portugal with more then 3 years of professional experience.
               I've worked mostly with C#, .NET, SQL, and Azure, gaining valuable experience in Agile
               software development environments, processes, and methodologies.
             </p>

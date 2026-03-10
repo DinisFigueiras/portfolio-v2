@@ -70,6 +70,14 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
 npm run build
 ```
 
+### Deploy
+
+The built files in the `dist/` folder can be deployed to any static hosting service:
+
+- **Vercel**: Connect your GitHub repo for automatic deployments
+- **Netlify**: Drag & drop the `dist/` folder or connect via Git
+- **GitHub Pages**: Use GitHub Actions for automated deployment
+
 ## 📂 Project Structure
 
 ```
@@ -146,14 +154,3 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6e2aae17-2885-476d-98ea-6d940fbccf3d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

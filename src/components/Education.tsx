@@ -45,7 +45,7 @@ const Education = () => {
     {
       name: 'Microsoft Certified: Azure Developer Associate (AZ-204)',
       issuer: 'Microsoft',
-      date: 'September 2024',
+      date: 'October 2025',
       credentialId: '575FDB310F01BE57'
     },
     {

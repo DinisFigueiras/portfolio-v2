@@ -112,7 +112,7 @@ const Hero = () => {
 
           <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              24 years old Software Engineer from Portugal. I specialize in C#, .NET, Azure and SQL,
+              25 years old Software Engineer from Portugal. I specialize in C#, .NET, Azure and SQL,
               with experience in Agile development environments and a passion for building scalable solutions.
             </p>
           </div>

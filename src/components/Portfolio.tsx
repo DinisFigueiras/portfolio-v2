@@ -8,20 +8,56 @@ const Portfolio = () => {
   const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fullscreenImageIndex, setFullscreenImageIndex] = useState<number | null>(null);
+  const [cardFullscreenImage, setCardFullscreenImage] = useState<string | null>(null);
+  const [showDemoMessage, setShowDemoMessage] = useState(false);
+  const [showSchoolMessage, setShowSchoolMessage] = useState(false);
+  const [showTbdMessage, setShowTbdMessage] = useState(false);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const projects = [
     {
+      title: 'House Links',
+      categories: ['web','mobile'],
+      description: 'Personal web app to organize product links and inspiration when buying a house, grouped by room with image previews and price tracking.',
+      image: '/images/projects/house-links/phone_mockup.png',
+      technologies: ['React', 'TypeScript', 'Vite', 'Vercel', 'Tailwind CSS',  'Web Development'],
+      liveUrl: 'https://house-links-demo.vercel.app/',
+      githubUrl: 'https://github.com/DinisFigueiras/House-Links.git',
+      featured: true,
+      stats: { stars: 15, forks: 4},
+      modalContent: {
+        images: ['/images/projects/house-links/house_link_empty.png', '/images/projects/house-links/add_link.png', '/images/projects/house-links/house_link_items.png'],
+        detailedDescription: 'House Links was developed to help me in organizing product links and inspiration after buying a house. The application includes features like filters for rooms, image previews, and price tracking.',
+        features: ['Add Links', 'Filter by Room', 'Price Tracking', 'Image Previews', 'Responsive Design']
+      }
+    },
+    {
+      title: 'Clinical Management System',
+      categories: ['web'], 
+      description: 'A comprehensive clinical management system built with modern web technologies.',
+      image: '/images/projects/clinic/clinic_mockup.png',
+      technologies: ['Next.js','TypeScript','Tailwind CSS', 'Prisma ORM', 'Clerk', 'Vercel'],
+      liveUrl: 'protected',
+      githubUrl: 'https://github.com/DinisFigueiras/portfolio',
+      featured: true,
+      stats: { stars: 5, forks: 0},
+      modalContent: {
+        images: ['/images/projects/clinic/clinic_dashboard.png', '/images/projects/clinic/pacients.png', '/images/projects/clinic/pacient_id.png'],
+        detailedDescription: 'A comprehensive clinical management system built with modern web technologies. The application includes features for patient management, appointment scheduling, and medical record keeping, all designed with a focus on usability and security.',
+        features: ['Patient Management', 'Appointment Scheduling', 'Medical Records', 'Secure Authentication']
+      }
+    },
+    {
       title: 'E-agenda',
-      category: 'mobile',
+      categories: ['web', 'mobile'],
       description: 'School schedule website and mobile application helping students organize their academic schedule and transition from traditional paper schedules to a digital environment.',
       image: '/images/projects/e-agenda.png',
       technologies: ['Android Studio', 'Web Development', 'Database', 'Mobile App'],
-      liveUrl: '#',
+      liveUrl: 'school',
       githubUrl: '#',
-      featured: true,
-      stats: { stars: 15, forks: 4 },
-      buttonType: 'pictures',
+      featured: false,
+      stats: { stars: 0, forks: 0},
       modalContent: {
         images: ['/images/projects/e-agenda.png', '/images/projects/e-agenda.png', '/images/projects/e-agenda.png'],
         detailedDescription: 'E-agenda was developed to help students transition from traditional paper schedules to a digital environment. The application includes features like schedule management, notifications, and cross-platform synchronization.',
@@ -30,15 +66,14 @@ const Portfolio = () => {
     },
     {
       title: 'Car Insurance Database Application',
-      category: 'web',
+      categories: ['web'],
       description: 'Design and development of a web application in Oracle Apex for a car insurance company with comprehensive database development in SQL Data Modeler.',
       image: '/images/projects/car.png',
       technologies: ['Oracle Apex', 'SQL', 'Database Design', 'Web Application'],
-      liveUrl: '#',
+      liveUrl: 'school',
       githubUrl: '#',
-      featured: true,
-      stats: { stars: 10, forks: 3 },
-      buttonType: 'demo',
+      featured: false,
+      stats: { stars: 0, forks: 0},
       modalContent: {
         images: ['/images/projects/car.png', '/images/projects/car.png'],
         detailedDescription: 'A comprehensive web application built with Oracle Apex for managing car insurance data. Features include policy management, claims processing, and comprehensive reporting.',
@@ -46,16 +81,32 @@ const Portfolio = () => {
       }
     },
     {
+      title: 'Personal Portfolio',
+      categories: ['web', 'mobile'], 
+      description: 'My personal portfolio website showcasing my projects, skills, and professional journey as a software developer.',
+      image: '/images/projects/portfolio/portfolio_mockup.png',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+      liveUrl: 'https://dinisfigueiras.pt',
+      githubUrl: 'https://github.com/DinisFigueiras/portfolio',
+      featured: true,
+      stats: { stars: 0, forks: 0},
+      buttonType: 'live',
+      modalContent: {
+        images: ['/images/projects/portfolio/home_page.png', '/images/projects/portfolio/skills.png', '/images/projects/portfolio/contact.png'],
+        detailedDescription: 'Website built to showcase my projects, skills, and professional journey. The portfolio includes sections for about me, projects, and contact information, with a focus on clean design and responsive layout.',
+        features: ['Project Showcase', 'Responsive Design', 'Contact Form', 'Clean UI/UX']
+      }
+    },
+    {
       title: 'Stock Replacement Application',
-      category: 'desktop',
+      categories: ['web'],
       description: 'A C# application connected to a company\'s inventory database to speed up the stock replacement process through barcode reader integration.',
       image: '/images/projects/stock.png',
       technologies: ['C#', '.NET', 'SQL Server', 'Barcode Scanner', 'Inventory Management'],
-      liveUrl: '#',
+      liveUrl: 'school',
       githubUrl: '#',
-      featured: true,
-      stats: { stars: 8, forks: 2 },
-      buttonType: 'pictures',
+      featured: false,
+      stats: { stars: 0, forks: 0},
       modalContent: {
         images: ['/images/projects/stock.png', '/images/projects/stock.png', '/images/projects/stock.png'],
         detailedDescription: 'Desktop application built with C# and .NET for inventory management. Integrates with barcode scanners to streamline the stock replacement process and reduce manual errors.',
@@ -64,37 +115,27 @@ const Portfolio = () => {
     },
     {
       title: 'Expense Tracker',
-      category: 'web',
+      categories: ['web'],
       description: 'Enterprise application built with ASP.NET Core using SyncFusion Component Library for comprehensive expense tracking and management.',
       image: '/images/projects/tracker.png',
       technologies: ['ASP.NET Core', 'C#', 'SyncFusion', 'Enterprise Application'],
-      liveUrl: '#',
+      liveUrl: 'tbd',
       githubUrl: '#',
       featured: false,
-      stats: { stars: 6, forks: 1 },
-      buttonType: 'live',
-      modalContent: null
-    },
-    {
-      title: 'Personal Portfolio',
-      category: 'web',
-      description: 'My personal portfolio website showcasing my projects, skills, and professional journey as a software developer.',
-      image: '/images/icons/coding-icon.svg',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
-      liveUrl: 'https://dinisfigueiras.pt',
-      githubUrl: 'https://github.com/DinisFigueiras/portfolio',
-      featured: true,
-      stats: { stars: 15, forks: 4 },
-      buttonType: 'live',
-      modalContent: null
+      stats: { stars: 0, forks: 0},
+      modalContent: {
+        images: ['/images/projects/tracker.png', '/images/projects/tracker.png', '/images/projects/tracker.png'],
+        detailedDescription: 'Enterprise application built with ASP.NET Core and SyncFusion Component Library for comprehensive expense tracking and management. The application includes features for categorizing expenses, generating reports, and visualizing spending patterns.',
+        features: ['Expense categorization', 'Report generation', 'Data visualization', 'Multi-user support']
+      }
     }
   ];
 
-  const categories = ['all', 'web', 'mobile', 'desktop'];
+  const categories = ['all', 'web', 'mobile', 'saas'];
 
   const filteredProjects = selectedCategory === 'all'
     ? projects
-    : projects.filter(project => project.category === selectedCategory);
+    : projects.filter(project => project.categories.includes(selectedCategory));
 
   const openModal = (project: any) => {
     setSelectedProject(project);
@@ -104,6 +145,27 @@ const Portfolio = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+    setFullscreenImageIndex(null);
+  };
+
+  const handleImageClick = (index: number) => {
+    setFullscreenImageIndex(index);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenImageIndex(null);
+  };
+
+  const handlePrevImage = () => {
+    if (fullscreenImageIndex !== null && selectedProject.modalContent) {
+      setFullscreenImageIndex((fullscreenImageIndex - 1 + selectedProject.modalContent.images.length) % selectedProject.modalContent.images.length);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (fullscreenImageIndex !== null && selectedProject.modalContent) {
+      setFullscreenImageIndex((fullscreenImageIndex + 1) % selectedProject.modalContent.images.length);
+    }
   };
 
   const getButtonText = (buttonType: string) => {
@@ -187,7 +249,7 @@ const Portfolio = () => {
             <div 
               key={index}
               ref={el => projectRefs.current[index] = el}
-              className={`group bg-card/80 backdrop-blur-sm rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 ${
+              className={`group bg-card/80 backdrop-blur-sm rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 flex flex-col h-full ${
                 visibleProjects.includes(index) 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
@@ -198,20 +260,43 @@ const Portfolio = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                  onClick={() => setCardFullscreenImage(project.image)}
                 />
                 
                 {/* Overlay with buttons */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center space-x-4">
-                  <Button size="sm" variant="secondary" asChild className="backdrop-blur-sm">
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <Eye size={16} />
-                    </a>
-                  </Button>
-                  <Button size="sm" variant="secondary" asChild className="backdrop-blur-sm">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github size={16} />
-                    </a>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                  <Button size="sm" variant="secondary" asChild className="backdrop-blur-sm pointer-events-auto">
+                    {project.liveUrl === 'protected' ? (
+                      <button 
+                        onClick={() => setShowDemoMessage(true)}
+                        className="flex items-center gap-2"
+                      >
+                        <ExternalLink size={16} />
+                        <span>Live Demo</span>
+                      </button>
+                    ) : project.liveUrl === 'school' ? (
+                      <button 
+                        onClick={() => setShowSchoolMessage(true)}
+                        className="flex items-center gap-2"
+                      >
+                        <ExternalLink size={16} />
+                        <span>Live Demo</span>
+                      </button>
+                    ) : project.liveUrl === 'tbd' ? (
+                      <button 
+                        onClick={() => setShowTbdMessage(true)}
+                        className="flex items-center gap-2"
+                      >
+                        <ExternalLink size={16} />
+                        <span>Live Demo</span>
+                      </button>
+                    ) : project.liveUrl && project.liveUrl !== '' ? (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <ExternalLink size={16} />
+                        <span>Live Demo</span>
+                      </a>
+                    ) : null}
                   </Button>
                 </div>
                 
@@ -234,11 +319,11 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed flex-1">
                   {project.description}
                 </p>
                 
@@ -253,29 +338,17 @@ const Portfolio = () => {
                   ))}
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  {project.buttonType === 'live' ? (
-                    <Button size="sm" variant="outline" asChild className="flex-1 group/btn">
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2">
-                        <ExternalLink size={14} className="group-hover/btn:rotate-45 transition-transform" />
-                        <span>{getButtonText(project.buttonType)}</span>
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => openModal(project)}
-                      className="flex-1 group/btn flex items-center justify-center space-x-2"
-                    >
-                      {(() => {
-                        const IconComponent = getButtonIcon(project.buttonType);
-                        return <IconComponent size={14} className="group-hover/btn:scale-110 transition-transform" />;
-                      })()}
-                      <span>{getButtonText(project.buttonType)}</span>
-                    </Button>
-                  )}
-                  <Button size="sm" variant="ghost" asChild>
+                <div className="flex items-center justify-center gap-2">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    onClick={() => project.modalContent ? openModal(project) : window.open(project.liveUrl, '_blank')}
+                    className="group/btn flex items-center justify-center gap-2"
+                  >
+                    <Eye size={14} className="group-hover/btn:scale-110 transition-transform" />
+                    <span>View More</span>
+                  </Button>
+                  <Button size="sm" variant="ghost" asChild className="hover:bg-transparent">
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github size={14} />
                     </a>
@@ -304,7 +377,7 @@ const Portfolio = () => {
                   {/* Image Gallery */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                     {selectedProject.modalContent.images.map((image: string, index: number) => (
-                      <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden">
+                      <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity" onClick={() => handleImageClick(index)}>
                         <img
                           src={image}
                           alt={`${selectedProject.title} screenshot ${index + 1}`}
@@ -351,6 +424,143 @@ const Portfolio = () => {
                   </div>
                 </>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Fullscreen Image Lightbox */}
+      {fullscreenImageIndex !== null && selectedProject?.modalContent && (
+        <div className="fixed inset-0 bg-black/30 z-50 backdrop-blur-sm overflow-hidden">
+          <button
+            onClick={closeFullscreen}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-50 cursor-pointer w-10 h-10 flex items-center justify-center"
+            type="button"
+          >
+            <X size={32} />
+          </button>
+
+          <div className="w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={selectedProject.modalContent.images[fullscreenImageIndex]}
+              alt="Fullscreen view"
+              className="max-w-full max-h-full object-contain"
+            />
+
+            {/* Navigation Arrows */}
+            {selectedProject.modalContent.images.length > 1 && (
+              <>
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute left-4 text-white hover:text-gray-300 transition-colors p-2 cursor-pointer"
+                  type="button"
+                >
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-4 text-white hover:text-gray-300 transition-colors p-2 cursor-pointer"
+                  type="button"
+                >
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-full">
+              {fullscreenImageIndex + 1} / {selectedProject.modalContent.images.length}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Card Fullscreen Image */}
+      {cardFullscreenImage && (
+        <div className="fixed inset-0 bg-black/30 z-50 backdrop-blur-sm overflow-hidden">
+          <button
+            onClick={() => setCardFullscreenImage(null)}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-50 cursor-pointer w-10 h-10 flex items-center justify-center"
+            type="button"
+          >
+            <X size={32} />
+          </button>
+
+          <div className="w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={cardFullscreenImage}
+              alt="Fullscreen view"
+              className="max-w-full max-h-full object-contain"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Demo Message Modal */}
+      {showDemoMessage && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-lg max-w-md w-full p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold">Demo Access</h3>
+              <Button variant="ghost" size="sm" onClick={() => setShowDemoMessage(false)}>
+                <X size={20} />
+              </Button>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              This is a real production application. For demonstration purposes, please contact the developer for viewing access.
+            </p>
+            <div className="flex justify-end">
+              <Button onClick={() => setShowDemoMessage(false)}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* School Message Modal */}
+      {showSchoolMessage && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-lg max-w-md w-full p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold">Internship Project</h3>
+              <Button variant="ghost" size="sm" onClick={() => setShowSchoolMessage(false)}>
+                <X size={20} />
+              </Button>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              This project was made in one of my internships so I don't have access to full code and the rights to demo it.
+            </p>
+            <div className="flex justify-end">
+              <Button onClick={() => setShowSchoolMessage(false)}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TBD Message Modal */}
+      {showTbdMessage && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-lg max-w-md w-full p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold">Project in Progress</h3>
+              <Button variant="ghost" size="sm" onClick={() => setShowTbdMessage(false)}>
+                <X size={20} />
+              </Button>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              This project is currently in progress and will be available for demo soon.
+            </p>
+            <div className="flex justify-end">
+              <Button onClick={() => setShowTbdMessage(false)}>
+                Close
+              </Button>
             </div>
           </div>
         </div>
